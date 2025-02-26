@@ -1,0 +1,44 @@
+.img {
+  width: 55vw;
+  background-color: #ACACAC;
+}
+
+.form {
+  width: 45vw;
+  flex-direction: column;
+}
+
+.title {
+  margin-top: 12vh;
+  font-size: 2.5em;
+}
+
+.form-title {
+  margin-top: 8vh;
+  margin-bottom: 5vh;
+}
+
+input {
+    border: none;
+    background-color: #ddd;
+    font-size: 16px;
+}
+
+button {
+    width: 12vw;
+    height: 5vh;
+    border: none;
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+.login-text {
+    color: #000;
+    font-weight: bold;
+}

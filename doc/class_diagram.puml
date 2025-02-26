@@ -1,0 +1,32 @@
+@startuml
+
+class Usuario {
+    + id: string <<PK>>
+    - nombre: string
+    - email: string
+    - contraseña: string
+    - isAdmin: bool
+}
+
+class Pista {
+    + id: string <<PK>>
+    - localización: string
+    - precio: float
+    - disponibilidad: bool
+    - horario: string
+}
+
+class Reserva {
+    + id: string <<PK>>
+    - fecha: datetime
+    - horaInicio: datetime
+    - horaFin: datetime
+    + idUsuario: string <<FK>>
+    + idPista: string <<FK>>
+}
+
+Usuario "1" --> "0..*" Reserva : realiza
+Reserva "0..*" --> "1" Pista : reserva
+Usuario "1" --> "0..*" Pista : gestiona
+
+@enduml

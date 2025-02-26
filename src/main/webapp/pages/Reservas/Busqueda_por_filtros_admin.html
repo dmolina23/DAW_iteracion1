@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>UJA-Reservas - Búsqueda y filtros</title>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+    />
+    <style>
+        .card.bg-secondary {
+            border-radius: 8px;
+            overflow: hidden;
+            width: 300px;
+        }
+        /* contenido blanco */
+        .card-img-top-sim {
+            background-color: #ffffff;
+            height: 150px;
+            border-radius: 0.5rem;
+        }
+        /* Botón “Reserva Ya” con color morado */
+        .btn-reserva {
+            background-color: #7b55c5;
+            color: #fff;
+            border: none;
+            font-weight: 600;
+        }
+        .btn-reserva:hover {
+            background-color: #6b48ad;
+        }
+        /* Estilo de la barra de búsqueda */
+        .search-bar {
+            background-color: #ccc;
+            border-radius: 0.5rem;
+            padding: 10px;
+        }
+        .search-bar input.form-control {
+            border-radius: 0.5rem;
+        }
+        /* Para el sidebar */
+        .sidebar {
+            background-color: #444;
+            color: #fff;
+            border-radius: 0.5rem;
+            padding: 15px;
+        }
+        .sidebar .btn-reset {
+            background-color: #666;
+            border: none;
+            color: #fff;
+        }
+        .sidebar label {
+            font-weight: 500;
+        }
+        .sidebar input[type=range] {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Encabezado superior -->
+<header class="bg-white border-bottom">
+    <div class="container d-flex justify-content-between align-items-center py-2">
+        <!-- Logo + Texto a la izquierda -->
+        <div class="d-flex align-items-center gap-2">
+            <img
+                    src="https://via.placeholder.com/40"
+                    alt="Logo"
+                    class="rounded-circle"
+                    style="width: 40px; height: 40px;"
+            />
+            <span class="fw-bold fs-4 text-black">UJA-Reservas</span>
+        </div>
+    </div>
+</header>
+
+<!-- Menú principal -->
+<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom">
+    <div class="container position-relative">
+        <!-- Enlaces centrados -->
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a
+                        class="nav-link text-black fw-semibold active border-bottom border-2 border-dark"
+                        href="#"
+                >
+                    Reserva una pista
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-black fw-semibold" href="./Administrador_reserva.html">
+                    Mis reservas
+                </a>
+            </li>
+            <li class="nav-item">
+                <a
+                        class="nav-link text-black fw-semibold"
+                        href="../Horario/Administrador_Horario.html"
+                >
+                    Horario
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-black fw-semibold" href="../Admin_Pages_Usuarios/Admin_Users.html">
+                    Administración
+                </a>
+            </li>
+        </ul>
+        <!-- Iconos a la derecha -->
+        <div class="position-absolute top-50 end-0 translate-middle-y d-flex">
+            <img
+                    src="https://via.placeholder.com/24"
+                    alt="Icono1"
+                    class="ms-3"
+            />
+            <img
+                    src="https://via.placeholder.com/24"
+                    alt="Icono2"
+                    class="ms-3"
+            />
+        </div>
+    </div>
+</nav>
+
+<!-- Barra de búsqueda -->
+<div class="bg-white py-3 border-bottom">
+    <div class="container">
+        <div class="search-bar d-flex flex-wrap gap-2">
+            <!-- 3 inputs: ubicación, fecha/hora, tipo de pista -->
+            <div class="flex-grow-1">
+                <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Selecciona una ubicación"
+                />
+            </div>
+            <div class="flex-grow-1">
+                <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Fecha / Hora"
+                />
+            </div>
+            <div class="flex-grow-1">
+                <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Tipo de pista"
+                />
+            </div>
+            <!-- Botón Buscar -->
+            <button class="btn btn-secondary">
+                Buscar
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Contenido principal con sidebar (filtros) y cards -->
+<div class="container py-4">
+    <div class="row">
+        <!-- Sidebar de Filtros -->
+        <div class="col-12 col-md-3 mb-4">
+            <div class="sidebar">
+                <h5 class="mb-3">Filtrar</h5>
+                <button class="btn btn-reset mb-3 w-100">
+                    Resetea filtros
+                </button>
+                <hr class="border-light" />
+
+                <!-- Precio -->
+                <label class="form-label">Precio</label>
+                <div class="mb-3">
+                    <small>Desde</small>
+                    <input type="range" min="0" max="100" />
+                    <small>Hasta</small>
+                </div>
+                <hr class="border-light" />
+
+                <!-- Duración-->
+                <label class="form-label">Duración</label>
+                <div class="form-check">
+                    <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="dur1"
+                            checked
+                    />
+                    <label class="form-check-label" for="dur1">
+                        1h
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="dur2"
+                    />
+                    <label class="form-check-label" for="dur2">
+                        2h
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="dur3"
+                    />
+                    <label class="form-check-label" for="dur3">
+                        3h
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="dur4"
+                    />
+                    <label class="form-check-label" for="dur4">
+                        4h o más
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Área principal con resultados -->
+        <div class="col-12 col-md-9">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>Mostrando <strong>3</strong> resultados</div>
+                <div>
+                    Ordenar por:
+                    <select class="form-select d-inline-block" style="width:auto;">
+                        <option>Mejor Partido</option>
+                        <option>Precio</option>
+                        <option>Horario</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Grid de tarjetas -->
+            <div class="row row-cols-1 row-cols-md-3 g-3">
+                <!-- Card 1 -->
+                <div class="col d-flex justify-content-center">
+                    <div class="card bg-secondary text-white" style="border-radius: 8px; overflow: hidden; width: 200px;">
+                        <div class="p-3">
+                            <div class="card-img-top-sim w-100 rounded-2"></div>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="fw-bold">Pista 1</h6>
+                            <p class="mb-1">Pádel • 1h</p>
+                            <button class="btn btn-reserva btn-sm">Reserva Ya</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col d-flex justify-content-center">
+                    <div class="card bg-secondary text-white" style="border-radius: 8px; overflow: hidden; width: 200px;">
+                        <div class="p-3">
+                            <div class="card-img-top-sim w-100 rounded-2"></div>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="fw-bold">Pista 2</h6>
+                            <p class="mb-1">Pádel • 1h</p>
+                            <button class="btn btn-reserva btn-sm">Reserva Ya</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col d-flex justify-content-center">
+                    <div class="card bg-secondary text-white" style="border-radius: 8px; overflow: hidden; width: 200px;">
+                        <div class="p-3">
+                            <div class="card-img-top-sim w-100 rounded-2"></div>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="fw-bold">Pista 1</h6>
+                            <p class="mb-1">Pádel • 1h</p>
+                            <button class="btn btn-reserva btn-sm">Reserva Ya</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

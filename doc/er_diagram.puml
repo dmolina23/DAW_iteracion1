@@ -1,0 +1,35 @@
+@startuml
+
+entity "Usuario" as Usuario {
+    + id: string <<PK>>
+    --
+    nombre: string
+    email: string
+    contraseña: string
+    isAdmin: bool
+}
+
+entity "Pista" as Pista {
+    + id: string <<PK>>
+    --
+    localización: string
+    precio: float
+    disponibilidad: bool
+    horario: string
+}
+
+entity "Reserva" as Reserva {
+    + id: string <<PK>>
+    --
+    fecha: datetime
+    horaInicio: datetime
+    horaFin: datetime
+    idUsuario: string <<FK>>
+    idPista: string <<FK>>
+}
+
+Usuario ||--o{ Reserva : "Realiza"
+Reserva }o--|| Pista : "Reserva"
+Usuario ||--o{ Pista : "Gestiona"
+
+@enduml
